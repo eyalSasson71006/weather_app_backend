@@ -1,11 +1,14 @@
-const { handleError } = require("../../utils/handleErrors");
+const { createError } = require("../../utils/handleErrors");
 const weatherApiClient = require("../clients/weatherApiClient");
 const { validateLocation } = require("../validation/locationValidationService");
 
 const getWeather = async (location) => {
     try {
         const error = validateLocation(location);
-        if (error) return handleError(res, 400, `Joi Error: ${error}`);
+        if (error){
+            let errorObj = new Error(error);
+            return createError(errorObj, `Joi Error: `);
+        }
 
         const response = await weatherApiClient.get("/forecast.json", {
             params: {
@@ -14,7 +17,8 @@ const getWeather = async (location) => {
         });
         return response.data;
     } catch (error) {
-        handleError(res, error.status || 400, error.message);
+        let errorObj = new Error(error.response.data.error.message);
+        createError(errorObj);
     }
 };
 

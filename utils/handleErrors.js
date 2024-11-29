@@ -1,7 +1,7 @@
 const chalk = require("chalk");
 
-const createError = (validator, errorObj, status = null) => {
-    errorObj.message = `${validator} Error: ${errorObj.message}`;
+const createError = (errorObj, validator = "", status = null) => {
+    errorObj.message = `${validator}${errorObj.message}`;
     errorObj.status = status || errorObj.status || 400;
     throw new Error(errorObj);
 };
