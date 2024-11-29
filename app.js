@@ -2,6 +2,7 @@ const express = require("express");
 const router = require("./router/router");
 const chalk = require("chalk");
 const { handleError } = require("./utils/handleErrors");
+const corsMiddleware = require("./middlewares/cors");
 require("dotenv").config();
 
 if (!process.env.PORT || !process.env.WEATHER_API_URL || !process.env.WEATHER_API_KEY) {
@@ -11,6 +12,7 @@ if (!process.env.PORT || !process.env.WEATHER_API_URL || !process.env.WEATHER_AP
 const app = express();
 const PORT = process.env.PORT;
 
+app.use(corsMiddleware);
 app.use(express.json());
 app.use(router);
 
