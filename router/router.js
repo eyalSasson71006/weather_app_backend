@@ -1,5 +1,6 @@
 const express = require("express");
 const { handleError } = require("../utils/handleErrors");
+const weatherRestController = require("../weather/routes/weatherRestController");
 
 const router = express.Router();
 
