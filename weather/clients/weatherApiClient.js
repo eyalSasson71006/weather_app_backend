@@ -12,7 +12,7 @@ const weatherClient = axios.create({
     headers: {
         Accept: 'application/json',
     },
-    timeout: 10000,
+    timeout: 5000,
 });
 
 module.exports = weatherClient;

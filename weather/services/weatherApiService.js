@@ -16,8 +16,8 @@ const getWeather = async (location) => {
             }
         });
         return response.data;
-    } catch (error) {
-        let errorObj = new Error(error.response.data.error.message);
+    } catch (error) {        
+        let errorObj = new Error(error.response?.data?.error?.message || error.message);
         createError(errorObj);
     }
 };
