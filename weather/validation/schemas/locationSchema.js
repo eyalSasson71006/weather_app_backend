@@ -4,7 +4,7 @@ const locationValidation = (location) => {
     const schema = Joi.string()
         .trim()
         .min(2)
-        .max(50)
+        .max(255)
         .required()
         .messages({
             "string.empty": "Location is required.",
