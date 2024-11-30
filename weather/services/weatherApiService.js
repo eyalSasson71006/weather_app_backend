@@ -5,7 +5,7 @@ const { validateLocation } = require("../validation/locationValidationService");
 const getWeather = async (location) => {
     try {
         const error = validateLocation(location);
-        if (error){
+        if (error) {
             let errorObj = new Error(error);
             return createError(errorObj, `Joi Error: `);
         }
@@ -16,7 +16,7 @@ const getWeather = async (location) => {
             }
         });
         return response.data;
-    } catch (error) {        
+    } catch (error) {
         let errorObj = new Error(error.response?.data?.error?.message || error.message);
         createError(errorObj);
     }
