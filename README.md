@@ -18,7 +18,7 @@ This is the backend for the Weather App, built with Node.js and Express. It hand
 
 4. Start the server:
     ```bash
-    npm run dev
+    npm start
 
 5. The backend will run on:
     ```bash
